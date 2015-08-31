@@ -42,7 +42,7 @@ exports.wake = function(macAddress, options, callback) {
     address: (options.address)? options.address : '255.255.255.255',
     port: (options.port)? options.port : 9
   };
-  
+
   var magicPacket = exports.createMagicPacket(macAddress);
   var protocol = net.isIPv6(_options.address) ? 'udp6' : 'udp4';
   var socket = dgram.createSocket(protocol);
@@ -57,7 +57,7 @@ exports.wake = function(macAddress, options, callback) {
     callback('ERROR: '+error.stack);
     socket.close();
   });
-  
+
   socket.once('listening', function() {
     socket.setBroadcast(true);
   });
