@@ -51,6 +51,7 @@ exports.wake = function(macAddress, options, callback) {
     if(!error) {
       callback();
     }
+    socket.close();
   });
   
   socket.on('error', function(error) {
